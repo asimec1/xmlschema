@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Studenti">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Version" type="xs:decimal"/>
+        <xs:element name="Student">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Ime" type="xs:string"/>
+              <xs:element name="Prezime" type="xs:string"/>
+              <xs:element name="Grupa" type="xs:string"/>
+              <xs:element name="GodinaRodjenja" type="xs:integer"/>
+              <xs:element name="Predmet">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Naslov" type="xs:string"/>
+                    <xs:element name="Semestar" type="xs:integer"/>
+                    <xs:element name="Kolokviji">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Kolokvij">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:integer">
+                                  <xs:attribute name="Sifra" type="xs:string" use="required"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="Vjezbe">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element maxOccurs="unbounded" name="Vjezba">
+                            <xs:complexType>
+                              <xs:simpleContent>
+                                <xs:extension base="xs:string">
+                                  <xs:attribute name="Sifra" type="xs:string" use="required"/>
+                                </xs:extension>
+                              </xs:simpleContent>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="RedniBroj" type="xs:integer" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
